@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do-List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>To-Do-List</h1>
+    </header>
+    <select class="botao-select" name="" id="">
+        <option value="1">Todos</option>
+        <option value="1">Baixa urgência</option>
+        <option value="1">Média urgência</option>
+        <option value="1">Alta urgência</option>
+        <option value="1">Concluídos</option>
+    </select>
+    <button class="botao botao-filtro">Aplicar</button>
+    <button class="botao-adicionar-tarefa" id="botao-adicionar-tarefa" onclick="abrirModal()">+</button>
+    <div class="container">
+
+        <div class="container-item">
+            <div class="container-item-parte1">
+                <p class="container-item-parte1-titulo">Titulo tarefa</p>
+                <div class="container-item-parte1-tag"><p>Prioridade</p></div>
+            </div>
+            <div class="container-item-parte2">
+                <p class="container-item-parte2-descricao">teste descrição</p>
+            </div>
+            <div class="container-item-parte3">
+                <div class="container-item-parte3-deletar">x</div>
+                <div class="container-item-parte3-editar">Editar</div>
+            </div>
+        </div>
+
+        <div class="container-item">
+            <div class="container-item-parte1">
+                <p class="container-item-parte1-titulo">Titulo tarefa</p>
+                <div class="container-item-parte1-tag"><p>Prioridade</p> </div>
+            </div>
+            <div class="container-item-parte2">
+                <p class="container-item-parte2-descricao">Descrição tarefa. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+            </div>
+            <div class="container-item-parte3">
+                <div class="container-item-parte3-deletar">x</div>
+                <div class="container-item-parte3-editar">Editar</div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="modal-container" id="modal">
+        <div class="modal-form">
+
+            <div class="modal-header">
+                <h3>Adicionar tarefa</h3>
+                <div class="fechar-modal" onclick="fecharModal()"><p>X</p></div>
+            </div>
+
+            <form action="" id="formulario-tarefa">
+                <p>Titulo tarefa</p>
+                <input type="text" id="titulo-formulario" name="titulo" class="modal-titulo">
+                <p>Descrição</p>
+                <input type="text" id="descricao-formulario" name="descricao" class="modal-descricao">
+                <br>
+                
+                <div class="container-rodape-modal">
+                    <div>                        
+                        <span>Prioridade</span>
+                        <select class="botao-select">
+                            <option value="1">Selecionar</option>
+                            <option value="1">Baixa urgência</option>
+                            <option value="1">Média urgência</option>
+                            <option value="1">Alta urgência</option>
+                        </select>
+                    </div>
+    
+                    <button type="submit" class="botao botao-salvar" value="">Salvar</button>
+                </div>
+
+            </form>            
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

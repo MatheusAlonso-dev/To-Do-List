@@ -1,0 +1,189 @@
+body{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 0 5%;
+    background-color: #004aad;
+}
+/*-------------GERAL-------------*/
+.botao-select{
+    padding-left: 15px;
+    margin-bottom: 15px;
+    height: 40px;
+    width: 200px;
+    border-radius: 50px;
+    border: 0;
+    font-size: 20px;
+    background-color: rgba(255, 255, 255, 0.499);
+}
+
+h1{
+    color: white;
+}
+.botao{
+    padding-left: 15px;
+    margin-bottom: 15px;
+    height: 40px;
+    width: 200px;
+    border-radius: 50px;
+    border: 0;
+    font-size: 20px;
+    background-color: #545454;
+    color: white;
+    cursor: pointer;
+}
+.botao-salvar{
+    background-color: #5170ff;
+}
+.botao-salvar:hover{
+    background-color: #374fba;
+
+}
+.botao-filtro:hover{
+    background-color: #383838;
+}
+.botao-adicionar-tarefa{
+    display: block;
+    margin: auto;
+    margin-bottom: 15px;
+    height: 40px;
+    width: 200px;
+    border-radius: 50px;
+    border: 0;
+    font-size: 30px;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.219);
+    cursor: pointer;
+}
+.botao-adicionar-tarefa:hover{
+    background-color: rgba(255, 255, 255, 0.415);
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+}
+.container-item{
+    border-radius: 10px;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.219);
+    display: flex;
+    margin-bottom: 20px;
+}
+
+/*-------------------------------------*/
+.container-item-parte1{
+    flex: 1;
+}
+.container-item-parte1-titulo{
+    margin: 15px;
+    font-size: 25px;
+}
+.container-item-parte1-tag{
+    background-color: #ff5757;
+    border-radius: 50px;
+    color: white;
+}
+.container-item-parte1-tag p{
+    padding: 5px;
+    margin: 15px;
+}
+
+
+/*-------------------------------------*/
+.container-item-parte2{
+    flex: 4;
+}
+.container-item-parte2 p{
+    margin: 15px;
+}
+
+/*-------------------------------------*/
+.container-item-parte3{
+    text-align: center;
+    
+}
+.container-item-parte3-deletar{
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.219);
+    height: 59px;
+    width: 59px;
+    margin-bottom: 4px;
+    cursor: pointer;
+}
+.container-item-parte3-deletar:hover{
+    background-color: #ff5757;
+}
+.container-item-parte3-editar{
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.219);
+    height: 59px;
+    width: 59px;
+    cursor: pointer;
+}    
+.container-item-parte3-editar:hover{
+    background-color: rgba(255, 255, 255, 0.415);
+}
+
+/*-------------------------------------*/
+.modal-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.478);
+    opacity: 0;
+    pointer-events: none;
+}
+.modal-form{
+    padding: 10px 30px 30px 30px;
+    background-color: rgb(193, 193, 193);
+}
+.modal-header{
+    display: flex;
+    justify-content: space-between;
+}
+.modal-form h3{
+    margin: 0;
+    margin-bottom: 50px;
+}
+.modal-form p{
+    margin: 0;
+}.modal-form input{
+    width: 800px;
+    margin-bottom: 30px;
+}
+.modal-titulo{
+    height: 40px;
+}
+.modal-descricao{
+    height: 200px;
+}
+.fechar-modal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    background-color: #ff5757;
+    border-radius: 50%;
+    cursor: pointer;
+    
+}
+.container-rodape-modal{
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-ativo{
+    opacity: 1;
+    pointer-events: auto;
+}
