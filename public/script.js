@@ -9,11 +9,18 @@ function abrirModal(){
     document.getElementById("modal").classList.add('modal-ativo')    
 }
 
-
 formulario.addEventListener('submit', function(event){
     event.preventDefault()
     const dados = new FormData(formulario)
     const dadosObj = Object.fromEntries(dados.entries())
+
+    for(let [campo, valor] of dados.entries()){
+        if(valor.trim() === ''){
+            alert(`O campo ${campo} esta vazio!`)
+            return
+        }
+    }
+    console.log('Tudo preenchido!')
 
     fetch('/home',{
         method: 'POST',
