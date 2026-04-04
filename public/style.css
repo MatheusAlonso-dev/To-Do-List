@@ -157,15 +157,16 @@ h1{
 }
 .modal-form p{
     margin: 0;
-}.modal-form input{
-    width: 800px;
-    margin-bottom: 30px;
 }
 .modal-titulo{
+    width: 800px;
+    margin-bottom: 30px;
     height: 40px;
 }
 .modal-descricao{
     height: 200px;
+    width: 800px;
+    margin-bottom: 30px;
 }
 .fechar-modal{
     display: flex;
