@@ -1,5 +1,22 @@
 import express from 'express'
+import mysql from 'mysql2'
+
 const app = express()
+
+const conexao = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'root',
+    database: 'db_to_do_list'
+})
+
+conexao.connect((erro)=>{
+    if(erro){
+        console.log('Erro ao conectar com banco de dados, erro: ', erro)
+    }else{
+        console.log('Conectado ao banco de dados MySql')
+    }
+})
 
 import path from "path"
 import { fileURLToPath } from "url"
