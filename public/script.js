@@ -58,8 +58,9 @@ async function getTarefas(){
                 <p class="container-item-parte2-descricao">${dado.description}</p>
             </div>
             <div class="container-item-parte3">
-                <div class="container-item-parte3-deletar">x</div>
-                <div class="container-item-parte3-editar">Editar</div>
+                <div class="container-item-parte3-botao excluir-item">x</div>
+                <div class="container-item-parte3-botao">Editar</div>
+                <div class="container-item-parte3-botao concluir-item">Concluir<br>✔</div>
             </div>
             `
 
@@ -83,8 +84,9 @@ async function getTarefas(){
                 <p class="container-item-parte2-descricao">${dado.description}</p>
             </div>
             <div class="container-item-parte3">
-                <div class="container-item-parte3-deletar">x</div>
-                <div class="container-item-parte3-editar">Editar</div>
+                <div class="container-item-parte3-botao excluir-item">x</div>
+                <div class="container-item-parte3-botao">Editar</div>
+                <div class="container-item-parte3-botao concluir-item">Concluir<br>✔</div>
             </div>
             `
 
@@ -107,8 +109,9 @@ async function getTarefas(){
                 <p class="container-item-parte2-descricao">${dado.description}</p>
             </div>
             <div class="container-item-parte3">
-                <div class="container-item-parte3-deletar">x</div>
-                <div class="container-item-parte3-editar">Editar</div>
+                <div class="container-item-parte3-botao excluir-item">x</div>
+                <div class="container-item-parte3-botao">Editar</div>
+                <div class="container-item-parte3-botao concluir-item">Concluir<br>✔</div>
             </div>
             `
 

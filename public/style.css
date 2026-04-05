@@ -105,9 +105,15 @@ h1{
 /*-------------------------------------*/
 .container-item-parte3{
     text-align: center;
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;    
 }
-.container-item-parte3-deletar{
+.container-item-parte3 div{
+    margin: 2px;
+    font-size: 13px;
+}
+.container-item-parte3-botao{
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -115,24 +121,16 @@ h1{
     background-color: rgba(255, 255, 255, 0.219);
     height: 59px;
     width: 59px;
-    margin-bottom: 4px;
     cursor: pointer;
 }
-.container-item-parte3-deletar:hover{
+.container-item-parte3-botao:hover{
+    background-color: rgba(255, 255, 255, 0.415);
+}
+.excluir-item:hover{
     background-color: #ff5757;
 }
-.container-item-parte3-editar{
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(255, 255, 255, 0.219);
-    height: 59px;
-    width: 59px;
-    cursor: pointer;
-}    
-.container-item-parte3-editar:hover{
-    background-color: rgba(255, 255, 255, 0.415);
+.concluir-item:hover{
+    background-color: #00bf63;
 }
 
 /*-------------------------------------*/
