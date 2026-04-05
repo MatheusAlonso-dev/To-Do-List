@@ -76,8 +76,12 @@ async function getTarefas(){
         const dadosMedium = await resMedium.json()
         
         dadosMedium.forEach(dado=>{
+            const idTarefa = dado.id
+            console.log(idTarefa)
+
             const item = document.createElement('div')
             item.classList.add('container-item')
+            item.classList.add(`task-id-${idTarefa}`)
 
             item.innerHTML = `
                 <div class="container-item-parte1">
@@ -102,8 +106,12 @@ async function getTarefas(){
         const dadosLow = await resLow.json()
         
         dadosLow.forEach(dado=>{
+            const idTarefa = dado.id
+            console.log(idTarefa)
+
             const item = document.createElement('div')
             item.classList.add('container-item')
+            item.classList.add(`task-id-${idTarefa}`)
 
             item.innerHTML = `
                 <div class="container-item-parte1">
@@ -118,7 +126,6 @@ async function getTarefas(){
                 <div class="container-item-parte3-botao concluir-item">Concluir<br>✔</div>
             </div>
             `
-
             container.appendChild(item)
         })
 
