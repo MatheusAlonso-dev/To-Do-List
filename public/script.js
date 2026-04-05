@@ -1,3 +1,6 @@
+window.onload = function(){
+    getTarefas()
+}
 const formulario = document.getElementById('formulario-tarefa')
 
 function fecharModal(){
@@ -10,7 +13,6 @@ function abrirModal(){
 }
 
 formulario.addEventListener('submit', function(event){
-    event.preventDefault()
     const dados = new FormData(formulario)
     const dadosObj = Object.fromEntries(dados.entries())
 
@@ -32,3 +34,38 @@ formulario.addEventListener('submit', function(event){
     
     fecharModal()
 })
+
+async function getTarefas(){
+    try{
+        const res = await fetch('/todos')
+        const dados = await res.json()
+
+        const container = document.getElementById('container')
+        container.innerHTML = ''
+
+        dados.forEach(dado=>{
+            const item = document.createElement('div')
+            item.classList.add('container-item')
+
+            item.innerHTML = `
+                <div class="container-item-parte1">
+                <p class="container-item-parte1-titulo">${dado.title}</p>
+                <div class="container-item-parte1-tag"><p>${dado.priority}</p></div>
+            </div>
+            <div class="container-item-parte2">
+                <p class="container-item-parte2-descricao">${dado.description}</p>
+            </div>
+            <div class="container-item-parte3">
+                <div class="container-item-parte3-deletar">x</div>
+                <div class="container-item-parte3-editar">Editar</div>
+            </div>
+            `
+
+            container.appendChild(item)
+        })
+
+        console.log(dados)
+    }catch (erro) {
+        console.log(erro)
+    }
+}

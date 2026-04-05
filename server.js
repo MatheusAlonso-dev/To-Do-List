@@ -35,6 +35,18 @@ app.get("/home",(req,res)=>{
     res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
 
+app.get('/todos',(req,res)=>{
+    const sql = 'select * from tasks'
+
+    conexao.query(sql, (erro, resultado)=>{
+        if(erro){
+            res.status(500).send(erro)
+        }else{
+            res.json(resultado)
+        }
+    })
+})
+
 app.post('/home',(req,res)=>{
     console.log(req.body.titulo)
     console.log(req.body.descricao)
