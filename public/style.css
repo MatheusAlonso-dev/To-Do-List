@@ -78,9 +78,15 @@ h1{
     font-size: 25px;
 }
 .container-item-parte1-tag{
-    background-color: #ff5757;
+    background-color: rgba(255, 255, 255, 0.219);
     border-radius: 50px;
     color: white;
+}
+.tag-high{
+    background-color: #ff5757;
+}
+.tag-medium{
+    background-color: #ffbd59;
 }
 .container-item-parte1-tag p{
     padding: 5px;

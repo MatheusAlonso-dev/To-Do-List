@@ -30,12 +30,13 @@ app.listen(3000,()=>{
     console.log("Servidor rodando na porta 3000")
 })
 
-
+// exibir pagina inicial
 app.get("/home",(req,res)=>{
     res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
 
-app.get('/todos',(req,res)=>{
+// buscar todas as tarefas
+app.get('/all',(req,res)=>{
     const sql = 'select * from tasks'
 
     conexao.query(sql, (erro, resultado)=>{
@@ -47,7 +48,47 @@ app.get('/todos',(req,res)=>{
     })
 })
 
-app.post('/home',(req,res)=>{
+// buscar apenas tarefas low priority
+app.get('/low',(req,res)=>{
+    const sql = "select * from tasks where priority = 'low'"
+
+    conexao.query(sql,(erro,resultado)=>{
+        if(erro){
+            res.status(500).send(erro)
+        }else{
+            res.json(resultado)
+        }
+    })
+})
+
+// buscar apenas tarefas medium priority
+app.get('/medium',(req,res)=>{
+    const sql = "select * from tasks where priority = 'medium'"
+
+    conexao.query(sql,(erro,resultado)=>{
+        if(erro){
+            res.status(500).send(erro)
+        }else{
+            res.json(resultado)
+        }
+    })
+})
+
+// buscar apenas tarefas high priority
+app.get('/high',(req,res)=>{
+    const sql = "select * from tasks where priority = 'high'"
+
+    conexao.query(sql,(erro,resultado)=>{
+        if(erro){
+            res.status(500).send(erro)
+        }else{
+            res.json(resultado)
+        }
+    })
+})
+
+// adicionar tarefa
+app.post('/push',(req,res)=>{
     console.log(req.body.titulo)
     console.log(req.body.descricao)
     console.log(req.body.prioridade)
