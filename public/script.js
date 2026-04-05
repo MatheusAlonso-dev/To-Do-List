@@ -46,8 +46,12 @@ async function getTarefas(){
         container.innerHTML = ''
 
         dadosHigh.forEach(dado=>{
+            const idTarefa = dado.id
+            console.log(idTarefa)
+            
             const item = document.createElement('div')
             item.classList.add('container-item')
+            item.classList.add(`task-id-${idTarefa}`)
 
             item.innerHTML = `
                 <div class="container-item-parte1">
@@ -59,7 +63,7 @@ async function getTarefas(){
             </div>
             <div class="container-item-parte3">
                 <div class="container-item-parte3-botao excluir-item">x</div>
-                <div class="container-item-parte3-botao">Editar</div>
+                <div class="container-item-parte3-botao editar-item">Editar</div>
                 <div class="container-item-parte3-botao concluir-item">Concluir<br>✔</div>
             </div>
             `
@@ -85,7 +89,7 @@ async function getTarefas(){
             </div>
             <div class="container-item-parte3">
                 <div class="container-item-parte3-botao excluir-item">x</div>
-                <div class="container-item-parte3-botao">Editar</div>
+                <div class="container-item-parte3-botao editar-item">Editar</div>
                 <div class="container-item-parte3-botao concluir-item">Concluir<br>✔</div>
             </div>
             `
@@ -110,7 +114,7 @@ async function getTarefas(){
             </div>
             <div class="container-item-parte3">
                 <div class="container-item-parte3-botao excluir-item">x</div>
-                <div class="container-item-parte3-botao">Editar</div>
+                <div class="container-item-parte3-botao editar-item">Editar</div>
                 <div class="container-item-parte3-botao concluir-item">Concluir<br>✔</div>
             </div>
             `
@@ -118,10 +122,42 @@ async function getTarefas(){
             container.appendChild(item)
         })
 
-
-
-        console.log(dados)
     }catch (erro) {
         console.log(erro)
     }
 }
+
+document.addEventListener('click', function(event){
+    if(event.target.classList.contains('excluir-item')){
+        const task = event.target.closest(".container-item")
+
+        const classeId = [...task.classList]
+            .find(c => c.startsWith("task-id-"));
+        
+        const id = classeId.replace('task-id-','')
+
+        console.log('excluir: ', id)
+    }
+
+    if(event.target.classList.contains('editar-item')){
+        const task = event.target.closest(".container-item")
+
+        const classeId = [...task.classList]
+            .find(c => c.startsWith("task-id-"));
+        
+        const id = classeId.replace('task-id-','')
+
+        console.log('editar: ', id)
+    }
+
+    if(event.target.classList.contains('concluir-item')){
+        const task = event.target.closest(".container-item")
+
+        const classeId = [...task.classList]
+            .find(c => c.startsWith("task-id-"));
+        
+        const id = classeId.replace('task-id-','')
+
+        console.log('concluir: ', id)
+    }
+})
