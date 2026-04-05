@@ -67,6 +67,7 @@ h1{
     background-color: rgba(255, 255, 255, 0.219);
     display: flex;
     margin-bottom: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 /*-------------------------------------*/
@@ -79,8 +80,9 @@ h1{
 }
 .container-item-parte1-tag{
     background-color: rgba(255, 255, 255, 0.219);
-    border-radius: 50px;
+    border-radius: 0px 50px 50px 0;
     color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }
 .tag-high{
     background-color: #ff5757;
@@ -107,7 +109,7 @@ h1{
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;    
+  
 }
 .container-item-parte3 div{
     margin: 2px;

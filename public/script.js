@@ -5,11 +5,13 @@ const formulario = document.getElementById('formulario-tarefa')
 
 function fecharModal(){
     document.getElementById("modal").classList.remove('modal-ativo')
+    document.body.style.overflow = 'auto'
     formulario.reset()
 }
 
 function abrirModal(){
-    document.getElementById("modal").classList.add('modal-ativo')    
+    document.getElementById("modal").classList.add('modal-ativo')
+    document.body.style.overflow = 'hidden'  
 }
 
 formulario.addEventListener('submit', function(event){
