@@ -36,6 +36,13 @@ app.get("/home",(req,res)=>{
 })
 
 app.post('/home',(req,res)=>{
-    console.log(req.body)
+    console.log(req.body.titulo)
+    console.log(req.body.descricao)
+    console.log(req.body.prioridade)
+
     res.send('dados recebidos')
+
+    const sql = 'INSERT INTO tasks (title, description, priority) values(?, ?, ?)'
+
+    conexao.query(sql,[req.body.titulo, req.body.descricao, req.body.prioridade])
 })
