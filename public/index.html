@@ -10,14 +10,14 @@
     <header>
         <h1>To-Do-List</h1>
     </header>
-    <select class="botao-select" name="" id="">
-        <option value="1">Todos</option>
-        <option value="1">Baixa urgência</option>
-        <option value="1">Média urgência</option>
-        <option value="1">Alta urgência</option>
-        <option value="1">Concluídos</option>
+    <select class="botao-select" name="" id="filtro">
+        <option value="pendentes">Pendentes</option>
+        <option value="baixa">Baixa urgência</option>
+        <option value="media">Média urgência</option>
+        <option value="alta">Alta urgência</option>
+        <option value="concluidas">Concluídos</option>
     </select>
-    <button class="botao botao-filtro">Aplicar</button>
+    <button class="botao botao-filtro" onclick="setFiltros()">Aplicar</button>
     <button class="botao-adicionar-tarefa" id="botao-adicionar-tarefa" onclick="abrirModal()">+</button>
     <div class="container" id="container">
 

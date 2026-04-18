@@ -87,6 +87,19 @@ app.get('/high',(req,res)=>{
     })
 })
 
+// buscar apenas tarefas completed
+app.get('/completed',(req,res)=>{
+    const sql = "select * from tasks where status = 'completed'"
+
+    conexao.query(sql,(erro,resultado)=>{
+        if(erro){
+            res.status(500).send(erro)
+        }else{
+            res.json(resultado)
+        }
+    })
+})
+
 // adicionar tarefa
 app.post('/push',(req,res)=>{
     console.log(req.body.titulo)
