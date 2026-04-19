@@ -119,36 +119,39 @@ formulario.addEventListener('submit', function(event){
     console.log('Tudo preenchido!')
 
     if(editarTarefa === true){
-        dados.append('idAtualizar', idEditar)
-        const dadosObj = Object.fromEntries(dados.entries())
-
-        fetch('/update',{
-            method: 'PUT',
-            body: JSON.stringify(dadosObj),
-            headers: {
-                'content-type':'application/json'
-            }
-        })
-        .then(res => res.text())
-        .then(data => console.log(data));
-
+        if(confirm('Tem certeza que deseja atualizar tarefa?')){
+            dados.append('idAtualizar', idEditar)
+            const dadosObj = Object.fromEntries(dados.entries())
+            fetch('/update',{
+                method: 'PUT',
+                body: JSON.stringify(dadosObj),
+                headers: {
+                    'content-type':'application/json'
+                }
+            })
+            .then(res => res.text())
+            .then(data => console.log(data));
+            fecharModal()
+            getTarefas()            
+        }
     }else{
-        const dadosObj = Object.fromEntries(dados.entries())
-
-        fetch('/push',{
-            method: 'POST',
-            body: JSON.stringify(dadosObj),
-            headers: {
-                'content-type':'application/json'
-            }
-        })
-        .then(res => res.text())
-        .then(data => console.log(data));
-
+        if(confirm('Tem certeza que deseja adicionar tarefa?')){
+            const dadosObj = Object.fromEntries(dados.entries())
+            fetch('/push',{
+                method: 'POST',
+                body: JSON.stringify(dadosObj),
+                headers: {
+                    'content-type':'application/json'
+                }
+            })
+            .then(res => res.text())
+            .then(data => console.log(data));
+            fecharModal()
+            getTarefas()
+        }
     }    
     
-    fecharModal()
-    getTarefas()
+    
 })
 
 async function getTarefas(){
