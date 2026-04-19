@@ -141,3 +141,14 @@ app.get('/getTaskId/:id',(req,res)=>{
     })
 
 })
+
+app.delete('/delete',(req,res)=>{
+    const sql = 'DELETE FROM tasks WHERE id = ?'
+    conexao.query(sql,[req.body.id],(erro,resultado)=>{
+        if(erro){
+            res.status(500).send(erro)
+        }else{
+            res.json(resultado)
+        }            
+    })
+})

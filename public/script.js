@@ -302,6 +302,19 @@ document.addEventListener('click', function(event){
         const id = classeId.replace('task-id-','')
 
         console.log('excluir: ', id)
+
+        if(confirm('Tem certeza que deseja excluir a tarefa?')){
+            fetch('/delete',{
+                method: 'DELETE',
+                body: JSON.stringify({id: id}),
+                headers: {
+                    'content-type':'application/json'
+                }
+            })
+            .then(res => res.text())
+            .then(data => console.log(data));
+        }
+        setFiltros()
     }
 
     if(event.target.classList.contains('editar-item')){
