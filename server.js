@@ -50,7 +50,7 @@ app.get('/all',(req,res)=>{
 
 // buscar apenas tarefas low priority
 app.get('/low',(req,res)=>{
-    const sql = "select * from tasks where priority = 'low'"
+    const sql = "select * from tasks where priority = 'low' AND status = 'pending'"
 
     conexao.query(sql,(erro,resultado)=>{
         if(erro){
@@ -63,7 +63,7 @@ app.get('/low',(req,res)=>{
 
 // buscar apenas tarefas medium priority
 app.get('/medium',(req,res)=>{
-    const sql = "select * from tasks where priority = 'medium'"
+    const sql = "select * from tasks where priority = 'medium' AND status = 'pending'"
 
     conexao.query(sql,(erro,resultado)=>{
         if(erro){
@@ -76,7 +76,7 @@ app.get('/medium',(req,res)=>{
 
 // buscar apenas tarefas high priority
 app.get('/high',(req,res)=>{
-    const sql = "select * from tasks where priority = 'high'"
+    const sql = "select * from tasks where priority = 'high' AND status = 'pending'"
 
     conexao.query(sql,(erro,resultado)=>{
         if(erro){
@@ -111,4 +111,13 @@ app.post('/push',(req,res)=>{
     const sql = 'INSERT INTO tasks (title, description, priority) values(?, ?, ?)'
 
     conexao.query(sql,[req.body.titulo, req.body.descricao, req.body.prioridade])
+})
+
+app.put('/completed',(req,res)=>{
+
+    res.send('dados recebidos para concluir')
+
+    const sql = "UPDATE tasks SET status = ? WHERE id = ?"
+
+    conexao.query(sql,['completed',req.body.id])
 })

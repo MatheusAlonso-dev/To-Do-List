@@ -2,6 +2,7 @@ window.onload = function(){
     setFiltros()
 }
 const formulario = document.getElementById('formulario-tarefa')
+let filtro = document.getElementById("select-filtro")
 
 
 let filtroLow = false
@@ -21,8 +22,7 @@ function abrirModal(){
     document.body.style.overflow = 'hidden'  
 }
 
-function setFiltros(){
-    filtro = document.getElementById("filtro")
+function setFiltros(){    
     valor = filtro.value
 
     switch(valor){
@@ -73,6 +73,10 @@ function setFiltros(){
 
 }
 
+filtro.addEventListener('change', async function(){
+    setFiltros()
+})
+
 formulario.addEventListener('submit', function(event){
     const dados = new FormData(formulario)
     const dadosObj = Object.fromEntries(dados.entries())
@@ -92,6 +96,8 @@ formulario.addEventListener('submit', function(event){
             'content-type':'application/json'
         }
     })
+    .then(res => res.text())
+    .then(data => console.log(data));
     
     fecharModal()
 })
@@ -217,14 +223,10 @@ async function getTarefas(){
                 item.innerHTML = `
                     <div class="container-item-parte1">
                     <p class="container-item-parte1-titulo">${dado.title}</p>
+                    <div class="container-item-parte1-tag tag-completed"><p>${dado.status}</p></div>
                 </div>
                 <div class="container-item-parte2">
                     <p class="container-item-parte2-descricao">${dado.description}</p>
-                </div>
-                <div class="container-item-parte3">
-                    <div class="container-item-parte3-botao excluir-item">x</div>
-                    <div class="container-item-parte3-botao editar-item">Editar</div>
-                    <div class="container-item-parte3-botao concluir-item">Concluir<br>✔</div>
                 </div>
                 `
                 container.appendChild(item)
@@ -270,5 +272,20 @@ document.addEventListener('click', function(event){
         const id = classeId.replace('task-id-','')
 
         console.log('concluir: ', id)
+
+        if(confirm("Tem certeza que deseja concluir?")){
+            fetch('/completed',{
+                method: 'PUT',
+                body: JSON.stringify({id: id}),
+                headers: {
+                    'content-type':'application/json'
+                }
+            })
+            .then(res => res.text())
+            .then(data => console.log(data));
+        }
+
+        setFiltros()       
+        
     }
 })

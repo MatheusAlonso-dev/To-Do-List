@@ -37,9 +37,6 @@ h1{
     background-color: #374fba;
 
 }
-.botao-filtro:hover{
-    background-color: #383838;
-}
 .botao-adicionar-tarefa{
     display: block;
     margin: auto;
@@ -89,6 +86,13 @@ h1{
 }
 .tag-medium{
     background-color: #ffbd59;
+}
+.tag-completed{
+    background-color:  #00bf63;
+    height: 100px;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
 }
 .container-item-parte1-tag p{
     padding: 5px;
