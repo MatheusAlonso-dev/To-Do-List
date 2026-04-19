@@ -121,3 +121,23 @@ app.put('/completed',(req,res)=>{
 
     conexao.query(sql,['completed',req.body.id])
 })
+
+app.put('/update',(req,res)=>{
+    console.log(req.body);
+    const sql = "UPDATE tasks SET title = ?, description = ?, priority = ? WHERE id = ?"
+    conexao.query(sql, [req.body.titulo, req.body.descricao, req.body.prioridade, req.body.idAtualizar])
+    res.send('Atualizado com sucesso!')
+})
+
+app.get('/getTaskId/:id',(req,res)=>{
+    const sql = 'SELECT * FROM tasks WHERE id = ?'
+
+    conexao.query(sql,[req.params.id],(erro,resultado)=>{
+        if(erro){
+            res.status(500).send(erro)
+        }else{
+            res.json(resultado)
+        }
+    })
+
+})

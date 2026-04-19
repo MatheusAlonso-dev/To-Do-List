@@ -3,6 +3,8 @@ window.onload = function(){
 }
 const formulario = document.getElementById('formulario-tarefa')
 let filtro = document.getElementById("select-filtro")
+let editarTarefa = false
+let idEditar
 
 
 let filtroLow = false
@@ -15,11 +17,36 @@ function fecharModal(){
     document.getElementById("modal").classList.remove('modal-ativo')
     document.body.style.overflow = 'auto'
     formulario.reset()
+    editarTarefa = false
+    document.getElementById('titulo-modal').textContent = 'Adicionar tarefa'
 }
 
 function abrirModal(){
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
     document.getElementById("modal").classList.add('modal-ativo')
     document.body.style.overflow = 'hidden'  
+}
+
+function atualizarTarefa(){
+    document.getElementById('titulo-modal').textContent = 'Atualizar tarefa'
+
+    fetch(`/getTaskId/${idEditar}`)
+    .then(res => res.json())
+    .then(data => {
+        
+        const tarefa = data[0]
+        document.getElementById('titulo-formulario').value = tarefa.title
+        document.getElementById('descricao-formulario').value = tarefa.description
+        document.getElementById('prioridade-formulario').value = tarefa.priority
+
+        abrirModal()
+        editarTarefa = true
+    });    
+
+
 }
 
 function setFiltros(){    
@@ -78,8 +105,9 @@ filtro.addEventListener('change', async function(){
 })
 
 formulario.addEventListener('submit', function(event){
+
+    event.preventDefault();
     const dados = new FormData(formulario)
-    const dadosObj = Object.fromEntries(dados.entries())
 
     for(let [campo, valor] of dados.entries()){
         if(valor.trim() === ''){
@@ -87,19 +115,40 @@ formulario.addEventListener('submit', function(event){
             return
         }
     }
+
     console.log('Tudo preenchido!')
 
-    fetch('/push',{
-        method: 'POST',
-        body: JSON.stringify(dadosObj),
-        headers: {
-            'content-type':'application/json'
-        }
-    })
-    .then(res => res.text())
-    .then(data => console.log(data));
+    if(editarTarefa === true){
+        dados.append('idAtualizar', idEditar)
+        const dadosObj = Object.fromEntries(dados.entries())
+
+        fetch('/update',{
+            method: 'PUT',
+            body: JSON.stringify(dadosObj),
+            headers: {
+                'content-type':'application/json'
+            }
+        })
+        .then(res => res.text())
+        .then(data => console.log(data));
+
+    }else{
+        const dadosObj = Object.fromEntries(dados.entries())
+
+        fetch('/push',{
+            method: 'POST',
+            body: JSON.stringify(dadosObj),
+            headers: {
+                'content-type':'application/json'
+            }
+        })
+        .then(res => res.text())
+        .then(data => console.log(data));
+
+    }    
     
     fecharModal()
+    getTarefas()
 })
 
 async function getTarefas(){
@@ -258,9 +307,10 @@ document.addEventListener('click', function(event){
         const classeId = [...task.classList]
             .find(c => c.startsWith("task-id-"));
         
-        const id = classeId.replace('task-id-','')
+        idEditar = classeId.replace('task-id-','')
+        atualizarTarefa()
 
-        console.log('editar: ', id)
+        console.log('editar: ', idEditar)
     }
 
     if(event.target.classList.contains('concluir-item')){
